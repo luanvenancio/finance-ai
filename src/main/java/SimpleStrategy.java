@@ -19,4 +19,5 @@ public class SimpleStrategy implements Strategy {
   public void finish(LocalDateDate date) {
     System.out.println("[Simple Strategy] Finished - " + date.toString());
   }
+  
 }
