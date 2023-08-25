@@ -6,17 +6,17 @@ public class SimpleStrategy implements Strategy {
     }
 	
     @Override
-	public void start(Date date) {
+	public void start(LocalDate date) {
 		System.out.println("[Simple Strategy] Starting - " + date.toString());
 	}
 	
     @Override
-	public void update( marketData update) {
-		System.out.println("[Simple Strategy] MD - " + update.toString());
+	public void update(MarketData marketData) {
+		System.out.println("[Simple Strategy] MD - " + marketData.toString());
 	}
 	
     @Override
-	public void finish(Date date) {
+	public void finish(LocalDateDate date) {
 		System.out.println("[Simple Strategy] Finished - " + date.toString());
 	}
 
