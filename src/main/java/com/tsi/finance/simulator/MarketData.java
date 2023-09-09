@@ -1,21 +1,26 @@
-package main.java;
+package com.tsi.finance.simulator;
 
-import java.time.LocalDate;
+import java.util.Date;
+
+/**
+ *
+ * @author luanv
+ */
 
 public class MarketData {
     
-    private LocalDate date;
+    private Date date;
     private Double open;
     private Double high;
     private Double low;
     private Double close;
     private Integer volume;
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return this.date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -58,8 +63,12 @@ public class MarketData {
     public void setVolume(Integer volume) {
         this.volume = volume;
     }
+    
+    public MarketData() {
+        
+    }
 
-    public MarketData(LocalDate date, Double open, Double high, Double low, Double close, Integer volume) {
+    public MarketData(Date date, Double open, Double high, Double low, Double close, Integer volume) {
         this.date = date;
         this.open = open;
         this.high = high;
@@ -74,3 +83,4 @@ public class MarketData {
     }
 
 }
+
