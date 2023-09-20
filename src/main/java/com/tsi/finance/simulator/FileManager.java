@@ -15,8 +15,8 @@ import java.util.logging.Logger;
  * @author luanv
  */
 public class FileManager {
-    
-    public static ArrayList<String> stringReader (String path){ 
+
+    public static ArrayList<String> stringReader(String path) {
         BufferedReader buffRead = null;
         try {
             buffRead = new BufferedReader(new FileReader(path));
@@ -25,7 +25,8 @@ public class FileManager {
             while (line != null) {
                 text.add(line);
                 line = buffRead.readLine();
-            }   buffRead.close();
+            }
+            buffRead.close();
             return text;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -40,10 +41,10 @@ public class FileManager {
                 Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }   
-    
-    public static void writer (String path, String text){ 
-        BufferedWriter buffWrite = null; 
+    }
+
+    public static void writer(String path, String text) {
+        BufferedWriter buffWrite = null;
         try {
             buffWrite = new BufferedWriter(new FileWriter(path));
             buffWrite.append(text);
@@ -57,10 +58,10 @@ public class FileManager {
                 Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    } 
-    
-    public static void writerAppend (String path, String text){ 
-        BufferedWriter buffWrite = null; 
+    }
+
+    public static void writerAppend(String path, String text) {
+        BufferedWriter buffWrite = null;
         try {
             buffWrite = new BufferedWriter(new FileWriter(path, true));
             buffWrite.append(text);
@@ -74,6 +75,6 @@ public class FileManager {
                 Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    } 
+    }
 
 }

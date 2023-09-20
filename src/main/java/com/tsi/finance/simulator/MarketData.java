@@ -15,10 +15,10 @@ public class MarketData {
     private double close;
     private int volume;
 
-    public MarketData () {
-        
+    public MarketData() {
+
     }
-    
+
     public MarketData(Date data, double open, double high, double low, double close, int volume) {
         this.date = data;
         this.open = open;
