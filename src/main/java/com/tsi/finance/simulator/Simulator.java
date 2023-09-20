@@ -24,10 +24,10 @@ public class Simulator {
     }
     
     public void readMarketData (String path){
-        ArrayList<MarketData> tempMarketData = FileManager.stringReader(path);
+        ArrayList<String> tempMarketData = FileManager.stringReader(path);
         for (int i = 1; i < tempMarketData.size(); i++) {
-            this.marketUpdate.add(tempMarketData.get(i));
-            //this.marketUpdate.add(this.parseMarketData(temp));
+            String temp = tempMarketData.get(i);
+            this.marketUpdate.add(this.parseMarketData(temp));
         }
     }
     
@@ -61,7 +61,7 @@ public class Simulator {
         
     }
     
-    /*private MarketData parseMarketData (String line) {
+    private MarketData parseMarketData (String line) {
         
         MarketData md = new MarketData ();
         
@@ -82,6 +82,6 @@ public class Simulator {
         md.setVolume(Integer.parseInt(split[5]));
         
         return md;
-    }*/
+    }
     
 }

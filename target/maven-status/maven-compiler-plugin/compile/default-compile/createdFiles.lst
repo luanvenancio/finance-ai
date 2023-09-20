@@ -1,0 +1,9 @@
+strategies\State.class
+com\tsi\finance\simulator\FileManager.class
+strategies\SimpleMovingAverageStrategy.class
+com\tsi\finance\simulator\SimuladorSimplificado.class
+com\tsi\finance\simulator\Simulator.class
+com\tsi\finance\simulator\MarketData.class
+strategies\GenerateDatabase.class
+com\tsi\finance\simulator\Strategy.class
+strategies\SimpleStrategy.class

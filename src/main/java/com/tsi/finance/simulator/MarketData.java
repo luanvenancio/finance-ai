@@ -6,81 +6,79 @@ import java.util.Date;
  *
  * @author luanv
  */
-
 public class MarketData {
-    
+
     private Date date;
-    private Double open;
-    private Double high;
-    private Double low;
-    private Double close;
-    private Integer volume;
+    private double open;
+    private double high;
+    private double low;
+    private double close;
+    private int volume;
+
+    public MarketData () {
+        
+    }
+    
+    public MarketData(Date data, double open, double high, double low, double close, int volume) {
+        this.date = data;
+        this.open = open;
+        this.high = high;
+        this.low = low;
+        this.close = close;
+        this.volume = volume;
+    }
 
     public Date getDate() {
-        return this.date;
+        return date;
     }
 
     public void setDate(Date date) {
         this.date = date;
     }
 
-    public Double getOpen() {
-        return this.open;
+    public double getOpen() {
+        return open;
     }
 
-    public void setOpen(Double open) {
+    public void setOpen(double open) {
         this.open = open;
     }
 
-    public Double getHigh() {
-        return this.high;
+    public double getHigh() {
+        return high;
     }
 
-    public void setHigh(Double high) {
+    public void setHigh(double high) {
         this.high = high;
     }
 
-    public Double getLow() {
-        return this.low;
+    public double getLow() {
+        return low;
     }
 
-    public void setLow(Double low) {
+    public void setLow(double low) {
         this.low = low;
     }
 
-    public Double getClose() {
-        return this.close;
+    public double getClose() {
+        return close;
     }
 
-    public void setClose(Double close) {
+    public void setClose(double close) {
         this.close = close;
     }
 
-    public Integer getVolume() {
-        return this.volume;
+    public int getVolume() {
+        return volume;
     }
 
-    public void setVolume(Integer volume) {
-        this.volume = volume;
-    }
-    
-    public MarketData() {
-        
-    }
-
-    public MarketData(Date date, Double open, Double high, Double low, Double close, Integer volume) {
-        this.date = date;
-        this.open = open;
-        this.high = high;
-        this.low = low;
-        this.close = close;
+    public void setVolume(int volume) {
         this.volume = volume;
     }
 
     @Override
     public String toString() {
-        return "[date=" + date + ", open=" + open + ", high=" + high + ", low=" + low + ", close=" + close + ", volume=" + volume + "]";
+        return "MarketData{" + "date=" + date + ", open=" + open + ", high=" + high + ", low=" + low + ", close=" + close + ", volume=" + volume + '}';
     }
 
 }
-
