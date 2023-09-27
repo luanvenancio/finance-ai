@@ -27,7 +27,7 @@ public class GenerateDatabase implements Strategy {
 
         System.out.println("Creating the strategy - Simple Strategy");
 
-        String header = "Open,High,Low,Close,Volume,Output\n";
+        String header = "Open,High,Low,Close,Volume,Return,Output\n";
         FileManager.writerAppend("./market_data/Database.csv", header);
 
         this.posicao = 0;
@@ -52,7 +52,8 @@ public class GenerateDatabase implements Strategy {
         System.out.println("[Simple Strategy] MD - " + update.toString());
         if (posicao > 0) {
             Double retorno = precoAmanha - precoHoje;
-            String data = historico.get(historico.size() - 1).getOpen() + "," + historico.get(historico.size() - 1).getHigh() + "," + historico.get(historico.size() - 1).getLow() + "," + historico.get(historico.size() - 1).getClose() + "," + historico.get(historico.size() - 1).getVolume() + "," + retorno + "\n";
+            //String data = historico.get(historico.size() - 1).getOpen() + "," + historico.get(historico.size() - 1).getHigh() + "," + historico.get(historico.size() - 1).getLow() + "," + historico.get(historico.size() - 1).getClose() + "," + historico.get(historico.size() - 1).getVolume() + "," + retorno + "\n";
+            String data = historico.get(historico.size() - 1).getOpen() + "," + historico.get(historico.size() - 1).getHigh() + "," + historico.get(historico.size() - 1).getLow() + "," + historico.get(historico.size() - 1).getClose() + "," + historico.get(historico.size() - 1).getVolume() + "," + retorno + "," + (retorno > 0 ? 1 : 0) + "\n";
             FileManager.writerAppend("./market_data/Database.csv", data);
         }
 
