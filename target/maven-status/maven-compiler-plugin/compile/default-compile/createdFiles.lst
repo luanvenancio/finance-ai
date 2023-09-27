@@ -1,3 +1,4 @@
+com\tsi\finance\simulator\FinanceSimulator.class
 strategies\State.class
 com\tsi\finance\simulator\FileManager.class
 strategies\SimpleMovingAverageStrategy.class

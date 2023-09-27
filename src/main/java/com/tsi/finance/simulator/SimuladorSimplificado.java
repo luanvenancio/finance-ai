@@ -2,7 +2,7 @@ package com.tsi.finance.simulator;
 
 import strategies.SimpleMovingAverageStrategy;
 import strategies.SimpleStrategy;
-import strategies.GenerateDatabase;
+import strategies.GenerateDatabaseStrategy;
 
 /**
  *
@@ -25,7 +25,7 @@ public class SimuladorSimplificado {
         //simulator.addStrategy(strategy);
         //SimpleMovingAverageStrategy strategy = new SimpleMovingAverageStrategy();
         //simulator.addStrategy(strategy);
-        GenerateDatabase strategy = new GenerateDatabase();
+        GenerateDatabaseStrategy strategy = new GenerateDatabaseStrategy();
         simulator.addStrategy(strategy);
 
         /*
