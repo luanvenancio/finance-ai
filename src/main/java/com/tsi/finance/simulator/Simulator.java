@@ -67,7 +67,7 @@ public class Simulator {
         
         String[] split = line.split(",");
         
-        SimpleDateFormat sdf = new SimpleDateFormat ("MM/dd/yyyy HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy HH:mm:ss");
         
         try {
             md.setDate(sdf.parse(split[0]));
