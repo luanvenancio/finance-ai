@@ -13,14 +13,25 @@ public class FinanceSimulator {
         
         simulator.readMarketData ("./market_data/BBDC4.csv");
         
-        //SimpleStrategy strategy = new SimpleStrategy ();
-        //simulator.addStrategy(strategy);
-        //SimpleMovingAverageStrategy strategy = new SimpleMovingAverageStrategy();
-        //simulator.addStrategy(strategy);
+        /*
+        // Simple Strategy
+        SimpleStrategy strategy = new SimpleStrategy ();
+        simulator.addStrategy(strategy);
+        */
         
-        //GenerateDatabaseStrategy strategy = new GenerateDatabaseStrategy();
-        //simulator.addStrategy(strategy);
+        /*
+        // Moving Average Strategy
+        SimpleMovingAverageStrategy strategy = new SimpleMovingAverageStrategy();
+        simulator.addStrategy(strategy);
+        */
         
+        /*
+        // Generate Database Strategy
+        GenerateDatabaseStrategy strategy = new GenerateDatabaseStrategy();
+        simulator.addStrategy(strategy);
+        */
+               
+        // Return Strategy
         ReturnStrategy strategy = new ReturnStrategy();
         simulator.addStrategy(strategy);
         
