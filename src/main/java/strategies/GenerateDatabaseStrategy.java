@@ -29,7 +29,7 @@ public class GenerateDatabaseStrategy implements Strategy {
         System.out.println("Creating the strategy - Simple Strategy");
 
         String header = "Date,Open,High,Low,Close,Volume,Return,Output\n";
-        FileManager.writerAppend("./market_data/Database.csv", header);
+        FileManager.writer("./market_data/Database.csv", header);
 
         this.posicao = 0;
         this.historico = new ArrayList<>();
