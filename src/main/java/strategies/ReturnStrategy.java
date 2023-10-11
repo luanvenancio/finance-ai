@@ -92,9 +92,6 @@ public class ReturnStrategy implements Strategy {
 
         DecimalFormat df = new DecimalFormat("##.##");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date1 = sdf.parse("2020-01-30");
-        Date date2 = sdf.parse(date);
-        System.out.println(sdf.parse(date));
         if (date == null) {
             this.finalizarExecucao(this.lastMarketData);
             System.out.println(df.format(this.capital) + "\t" + df.format(this.lastMarketData.getClose()));
