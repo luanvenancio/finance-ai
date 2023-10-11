@@ -21,18 +21,21 @@ public class ReturnStrategy implements Strategy {
     private int volumeNegociado;
     private double capital;
     private MarketData lastMarketData;
+    private ArrayList<Double> RetornoTotal;
     private HashMap<String, Prediction> predictions;
 
     public ReturnStrategy() {
         this.slippage = 0.0;
         this.volumeNegociado = 1;
         this.capital = 0;
+        this.RetornoTotal = new ArrayList<>();
     }
 
     public ReturnStrategy(double slippage, int volumeNegociado, double capital) {
         this.slippage = slippage;
         this.volumeNegociado = volumeNegociado;
         this.capital = capital;
+        this.RetornoTotal = new ArrayList<>();
     }
 
     @Override
@@ -66,9 +69,9 @@ public class ReturnStrategy implements Strategy {
         String currentDate = sdf.format(update.getDate());
 
         Prediction pred = this.predictions.get(currentDate);
-
-        if (pred != null) {
-            
+        System.out.println(currentDate);
+        //if (Integer.parseInt(currentDate) >= 20220000) {
+        if(pred != null ){  
             if (pred.getOutput() == 0
                     && this.estado != State.SHORT) {
                 this.venda(update);
@@ -79,18 +82,24 @@ public class ReturnStrategy implements Strategy {
                 this.compra(update);
             } 
         }
-        
+
         this.lastMarketData = update;
-        
+        //}
     }
 
     @Override
     public void finish(Date date) {
 
         DecimalFormat df = new DecimalFormat("##.##");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = sdf.parse("2020-01-30");
+        Date date2 = sdf.parse(date);
+        System.out.println(sdf.parse(date));
         if (date == null) {
             this.finalizarExecucao(this.lastMarketData);
             System.out.println(df.format(this.capital) + "\t" + df.format(this.lastMarketData.getClose()));
+            this.RetornoTotal.add(capital);
+            calculateFinal(this.RetornoTotal);
         } else {
             double capitalEstimado = this.capital;
             if (this.estado == State.LONG) {
@@ -99,9 +108,29 @@ public class ReturnStrategy implements Strategy {
             if (this.estado == State.SHORT) {
                 capitalEstimado = this.capital - this.lastMarketData.getClose();
             }
-            System.out.println(df.format(capitalEstimado) + "\t - " + df.format(this.lastMarketData.getClose()));
+            System.out.println(df.format(capitalEstimado) + "\t -> " + df.format(this.lastMarketData.getClose()) + "\t : " + this.estado);
+            this.RetornoTotal.add(capitalEstimado);
+        } 
+
+    }
+    
+    public static void calculateFinal(ArrayList<Double> values)
+    {
+        double sum = 0.0, standardDeviation = 0.0;
+        int length = values.size();
+
+        for(double value : values) {
+            sum += value;
         }
 
+        double mean = sum/length;
+
+        for(double value: values) {
+            standardDeviation += Math.pow(value - mean, 2);
+        }
+        
+        System.out.println("Resultado\n\tRetorno: " + mean + "\n\tRisco: " + Math.sqrt(standardDeviation/length));
+          
     }
 
     private void compra(MarketData update) {
@@ -134,7 +163,7 @@ public class ReturnStrategy implements Strategy {
             this.capital = this.capital - (update.getClose() + this.slippage) * volumeReal;
             this.estado = State.FLAT;
         }
-
+        this.RetornoTotal.add(this.capital);
     }
 
     private class Prediction {

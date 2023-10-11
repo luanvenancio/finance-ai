@@ -20,7 +20,7 @@ public class GenerateDatabaseStrategy implements Strategy{
         precoOntem = 0;
         this.arquivoCsv = new ArrayList<>();
         String header = "Date,Open,High,Low,Close,Volume,Return,Output\n";
-        FileManager.writer("./market_data/Database2.csv", header);
+        FileManager.writer("./market_data/Database.csv", header);
     
     }
 
@@ -46,7 +46,7 @@ public class GenerateDatabaseStrategy implements Strategy{
         if (precoOntem != 0){
             System.out.println(linha);
             this.arquivoCsv.add(linha);
-            FileManager.writerAppend("./market_data/Database2.csv", linha + "\n");
+            FileManager.writerAppend("./market_data/Database.csv", linha + "\n");
         }
         
         linha = fmt.format(update.getDate()) + "," +

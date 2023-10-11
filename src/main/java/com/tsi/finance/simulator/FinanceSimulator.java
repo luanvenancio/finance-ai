@@ -25,17 +25,16 @@ public class FinanceSimulator {
         simulator.addStrategy(strategy);
         */
         
-        
+        /*
         // Generate Database Strategy
         GenerateDatabaseStrategy strategy = new GenerateDatabaseStrategy();
         simulator.addStrategy(strategy);
+        */
         
-        
-        /*
         // Return Strategy
         ReturnStrategy strategy = new ReturnStrategy();
         simulator.addStrategy(strategy);
-        */
+       
         
         simulator.startSimulation();
     }
