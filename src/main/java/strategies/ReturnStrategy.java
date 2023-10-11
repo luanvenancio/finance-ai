@@ -71,17 +71,19 @@ public class ReturnStrategy implements Strategy {
         Prediction pred = this.predictions.get(currentDate);
         System.out.println(currentDate);
         //if (Integer.parseInt(currentDate) >= 20220000) {
-        if(pred != null ){  
-            if (pred.getOutput() == 0
-                    && this.estado != State.SHORT) {
-                this.venda(update);
-            }
-
-            if (pred.getOutput() == 1
-                    && this.estado != State.LONG) {
-                this.compra(update);
-            } 
+        if(pred == null ){ 
+			return;
+		}
+        
+		if (pred.getOutput() <= 0
+				&& this.estado != State.SHORT) {
+            this.venda(update);
         }
+
+        if (pred.getOutput() == 1
+                && this.estado != State.LONG) {
+            this.compra(update);
+        } 
 
         this.lastMarketData = update;
         //}
