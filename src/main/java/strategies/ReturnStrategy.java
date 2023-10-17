@@ -8,6 +8,10 @@ import java.util.HashMap;
 import com.tsi.finance.simulator.FileManager;
 import com.tsi.finance.simulator.MarketData;
 import com.tsi.finance.simulator.Strategy;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -65,33 +69,39 @@ public class ReturnStrategy implements Strategy {
     @Override
     public void update(MarketData update) {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMdd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String currentDate = sdf.format(update.getDate());
 
         Prediction pred = this.predictions.get(currentDate);
         System.out.println(currentDate);
-        //if (Integer.parseInt(currentDate) >= 20220000) {
-        if(pred != null ){  
-            if (pred.getOutput() == 0
-                    && this.estado != State.SHORT) {
-                this.venda(update);
-            }
 
-            if (pred.getOutput() == 1
-                    && this.estado != State.LONG) {
-                this.compra(update);
-            } 
+        try {
+            Date minDate = sdf.parse("20220101");
+            if (pred != null && update.getDate().after(minDate)) {
+
+                if (pred.getOutput() <= 0
+                        && this.estado != State.SHORT) {
+                    this.venda(update);
+                }
+
+                if (pred.getOutput() > 0
+                        && this.estado != State.LONG) {
+                    this.compra(update);
+                }
+
+            }
+        } catch (ParseException ex) {
+            ex.printStackTrace();
         }
 
         this.lastMarketData = update;
-        //}
     }
 
     @Override
     public void finish(Date date) {
 
         DecimalFormat df = new DecimalFormat("##.##");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         if (date == null) {
             this.finalizarExecucao(this.lastMarketData);
             System.out.println(df.format(this.capital) + "\t" + df.format(this.lastMarketData.getClose()));
@@ -106,37 +116,49 @@ public class ReturnStrategy implements Strategy {
                 capitalEstimado = this.capital - this.lastMarketData.getClose();
             }
             System.out.println(df.format(capitalEstimado) + "\t -> " + df.format(this.lastMarketData.getClose()) + "\t : " + this.estado);
-            this.RetornoTotal.add(capitalEstimado);
-        } 
+
+            try {
+                Date minDate = sdf.parse("20220101");
+                if (date.after(minDate)) {
+                    System.out.println("D" + date);
+                    System.out.println("A" + minDate + "\n");
+                    this.RetornoTotal.add(capitalEstimado);
+                }
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+
+        }
 
     }
-    
-    public static void calculateFinal(ArrayList<Double> values)
-    {
+
+    public static void calculateFinal(ArrayList<Double> values) {
         double sum = 0.0, standardDeviation = 0.0;
         int length = values.size();
 
-        for(double value : values) {
+        for (double value : values) {
             sum += value;
         }
 
-        double mean = sum/length;
+        double mean = sum / length;
 
-        for(double value: values) {
-            standardDeviation += Math.pow(value - mean, 2);
+        for (double value : values) {
+            standardDeviation += Math.pow((value - mean), 2);
         }
-        
-        System.out.println("Resultado\n\tRetorno: " + mean + "\n\tRisco: " + Math.sqrt(standardDeviation/length));
-          
+
+        System.out.println("Resultado\n\tRetorno: " + mean + "\n\tRisco: " + Math.sqrt(standardDeviation / length));
+
     }
 
     private void compra(MarketData update) {
         double volumeReal = this.volumeNegociado;
         if (this.estado != State.FLAT) {
             volumeReal = 2 * this.volumeNegociado;
+
+            this.capital = this.capital
+                    - (update.getClose() + this.slippage) * volumeReal;
         }
-        this.capital = this.capital
-                - (update.getClose() + this.slippage) * volumeReal;
+
         this.estado = State.LONG;
     }
 
@@ -144,9 +166,10 @@ public class ReturnStrategy implements Strategy {
         double volumeReal = this.volumeNegociado;
         if (this.estado != State.FLAT) {
             volumeReal = 2 * this.volumeNegociado;
+
+            this.capital = this.capital
+                    + (update.getClose() - this.slippage) * volumeReal;
         }
-        this.capital = this.capital
-                + (update.getClose() - this.slippage) * volumeReal;
         this.estado = State.SHORT;
     }
 
