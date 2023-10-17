@@ -11,7 +11,7 @@ public class FinanceSimulator {
     public static void main(String[] args) {
         Simulator simulator = new Simulator ();
         
-        simulator.readMarketData ("./market_data/BBDC4.csv");
+        simulator.readMarketData ("./market_data/RENT3.csv");
         
         /*
         // Simple Strategy
@@ -25,11 +25,9 @@ public class FinanceSimulator {
         simulator.addStrategy(strategy);
         */
         
-        /*
         // Generate Database Strategy
-        GenerateDatabaseStrategy strategy = new GenerateDatabaseStrategy();
-        simulator.addStrategy(strategy);
-        */
+        //GenerateDatabaseStrategy strategy = new GenerateDatabaseStrategy();
+        //simulator.addStrategy(strategy);
         
         // Return Strategy
         ReturnStrategy strategy = new ReturnStrategy();
