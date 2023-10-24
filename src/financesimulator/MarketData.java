@@ -1,11 +1,7 @@
-package com.tsi.finance.simulator;
+package financesimulator;
 
 import java.util.Date;
 
-/**
- *
- * @author luanv
- */
 public class MarketData {
 
     private Date date;

@@ -1,15 +1,11 @@
-package strategies;
+package financesimulator.strategies;
 
-import com.tsi.finance.simulator.MarketData;
-import com.tsi.finance.simulator.Strategy;
+import financesimulator.MarketData;
+import financesimulator.Strategy;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- *
- * @author luanv
- */
 public class SimpleMovingAverageStrategy implements Strategy {
 
     private State estado;
@@ -18,8 +14,6 @@ public class SimpleMovingAverageStrategy implements Strategy {
     private int volumeNegociado;
     private double capital;
     private MarketData lastMarketData;
-
-    // VARIAVEIS DA ESTRATEGIA
     private int mediaMovelCurta;
     private int mediaMovelLonga;
     private ArrayList<Double> precoHistorico;
@@ -89,12 +83,10 @@ public class SimpleMovingAverageStrategy implements Strategy {
 
         DecimalFormat df = new DecimalFormat("##.##");
 
-        //System.out.println("[Simple Strategy] Finishing - " + date.toString());
         if (date == null) {
             this.finalizarExecucao(this.lastMarketData);
             System.out.println(df.format(this.capital) + "\t" + df.format(this.lastMarketData.getClose()));
         } else {
-            // ESTIMATIVA DO RETORNO
             double capitalEstimado = this.capital;
             if (this.estado == State.LONG) {
                 capitalEstimado = this.capital + this.lastMarketData.getClose();

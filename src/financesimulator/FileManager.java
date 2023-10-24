@@ -1,4 +1,4 @@
-package com.tsi.finance.simulator;
+package financesimulator;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,10 +10,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author luanv
- */
 public class FileManager {
 
     public static ArrayList<String> stringReader(String path) {

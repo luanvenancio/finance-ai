@@ -1,13 +1,9 @@
-package com.tsi.finance.simulator;
+package financesimulator;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-/**
- *
- * @author luanv
- */
 public class Simulator {
     
     private final ArrayList<MarketData> marketUpdate;

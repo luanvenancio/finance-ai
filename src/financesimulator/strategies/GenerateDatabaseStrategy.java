@@ -1,12 +1,12 @@
 
-package strategies;
+package financesimulator.strategies;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import com.tsi.finance.simulator.FileManager;
-import com.tsi.finance.simulator.MarketData;
-import com.tsi.finance.simulator.Strategy;
+import financesimulator.FileManager;
+import financesimulator.MarketData;
+import financesimulator.Strategy;
 
 public class GenerateDatabaseStrategy implements Strategy{
 
