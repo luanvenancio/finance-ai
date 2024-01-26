@@ -98,8 +98,8 @@ public class ReturnStrategy implements Strategy {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         if (date == null) {
             this.finalizarExecucao(this.lastMarketData);
-            System.out.println(df.format(this.capital) + "\t" + df.format(this.lastMarketData.getClose()));
-            //System.out.println(df.format(this.capital));
+            //System.out.println(df.format(this.capital) + "\t" + df.format(this.lastMarketData.getClose()));
+            System.out.println(df.format(this.capital));
             this.RetornoTotal.add(capital);
             calculateFinal(this.RetornoTotal);
         } else {
@@ -110,8 +110,8 @@ public class ReturnStrategy implements Strategy {
             if (this.estado == State.SHORT) {
                 capitalEstimado = this.capital - this.lastMarketData.getClose();
             }
-            System.out.println(df.format(capitalEstimado) + "\t" + df.format(this.lastMarketData.getClose()));
-            //System.out.println(df.format(capitalEstimado));
+            //System.out.println(df.format(capitalEstimado) + "\t" + df.format(this.lastMarketData.getClose()));
+            System.out.println(df.format(capitalEstimado));
             
             try {
                 Date minDate = sdf.parse("20220101");
