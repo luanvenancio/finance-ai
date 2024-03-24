@@ -1,76 +1,71 @@
 # Automated Investment Strategies with Machine Learning
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=flat&logo=scikit-learn&logoColor=white)](https://img.shields.io/badge/scikitlearn-F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white) [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## Over view
+## Visão Geral
 
-This project aims to develop a comprehensive framework for creating and enhancing automated investment strategies utilizing Machine Learning (ML) techniques. The focus is on the Brazilian stock market, with specific emphasis on the Localiza (RENT3) stock. The project incorporates supervised learning, ensemble methods, and stacking to build and refine models for decision-making in stock trading. The code and reports (in portuguese) are organized for easy understanding and replication.
+Este projeto tem como objetivo desenvolver um framework abrangente para criar e aprimorar estratégias de investimento automatizadas utilizando técnicas de Aprendizado de Máquina (ML). O foco é o mercado de ações brasileiro, com ênfase específica na ação da Localiza (RENT3). O projeto incorpora aprendizado supervisionado, métodos de _Ensemble_ e _Stacking_ para construir e refinar modelos para tomada de decisões em negociações de ações.
 
-## Project Structure
+## Estrutura do Projecto
 
-#### Part 1: Supervised Learning Framework
+#### Parte 1: Estrutura de Aprendizado Supervisionado
 
-In this section, we lay the foundation for the project by implementing a supervised learning framework. Key steps include:
+Nesta seção, estabelecemos a base para o projeto implementando uma estrutura de aprendizado supervisionado. Os principais aspectos incluem:
 
-1. **Problem Definition**: Understanding the challenges of algorithmic trading and proposing a solution using Machine Learning.
+1. **Definição do Problema**: Compreender os desafios do _Algorithmic trading_ e propor uma solução utilizando Aprendizado de Máquina.
+
+2. **Definição da Solução**: Criar uma série de experimentos envolvendo as seguintes etapas:
+
+   - **Etapa 1**: Construção de um conjunto de dados para aprendizado supervisionado.
+   - **Etapa 2**: Desenvolver e analisar modelos de ML supervisionados.
+   - **Etapa 3**: Criar estratégias de investimento automatizadas usando ML e analisar retornos.
+
+3. **Requisitos e Análise de Resultados**: Implementar os seguintes requisitos para cada etapa:
+
+   - **Etapa 1**: Construir um conjunto de dados rico em atributos para modelos de ML, incluindo preços diários de ações, indicadores técnicos, dados estatísticos e características de defasagem.
    
-2. **Solution Definition**: Creating a series of experiments involving the following stages:
-
-   - **Step 1**: Building a dataset for supervised learning.
-   - **Step 2**: Developing and analyzing supervised ML models.
-   - **Step 3**: Creating automated investment strategies using ML and analyzing returns.
-
-3. **Requirements and Results Analysis**: Implementing the following requirements for each stage:
-
-   - **Step 1**: Constructing a feature-rich dataset for ML models, including daily stock prices, technical indicators, statistical data, and lag features.
+   - **Etapa 2**: Implementar Random Forest para classificação e Multilayer Perceptron para regressão. Utilizar diversas técnicas de validação e calcular métricas como AUC, Precisão, Revocação, MAE e RMSE.
    
-   - **Step 2**: Implementing Random Forest for classification and Multilayer Perceptron for regression. Employing various validation techniques and calculating metrics such as AUC, Precision, Recall, MAE, and RMSE.
+   - **Etapa 3**: Simular retornos usando as saídas do modelo de ML, calcular retornos diários e gerar métricas financeiras chave.
+
+4. **Simulador de Retornos**: Simular retornos usando as saídas do modelo.
+
+#### Parte 2: Técnicas de _Ensemble_ e _Stacking_
+
+A segunda parte do projeto concentra-se em aprimorar estratégias de investimento através de métodos de _ensemble_ e _stacking_. Isso envolve:
+
+1. **Definição do Problema**: Estender o projeto para incluir técnicas de aprendizado de _ensemble_ e _stacking_ para tomada de decisões aprimorada.
+
+2. **Definição da Solução**: Realizar experimentos com aprendizado de _ensemble_ e _stacking para regressão e classificação, utilizando modelos como Random Forest, Multilayer Perceptron, XGBoost, Naive Bayes e k-Nearest Neighbors: 
+
+   - **Aprendizado de Conjunto**: Combinar as saídas do modelo de ML para regressão e classificação usando técnicas como média simples e média ponderada com base na precisão do modelo.
    
-   - **Step 3**: Simulating returns using the ML model outputs, calculating daily returns, and generating key financial metrics.
+   - **Empilhamento**: Utilizar um modelo de _stacking_ não linear (Multilayer Perceptron) para agregar saídas de modelos individuais.
 
-4. **Return Simulator**: Simulating returns using the model outputs.
+3. **Requisitos e Análise de Resultados**: Desenvolver modelos para regressão e classificação, aplicar técnicas de aprendizado de _ensemble_ e _stacking_, e calcular métricas como AUC, Precisão, Revocação, MAE e RMSE. Comparar com modelos de linha de base.
 
-5. **Report**: Providing a detailed report covering utilized languages, packages, baseline analysis, ML results, and financial analysis.
+4. **Simulador de Retornos**: Simular retornos usando os modelos de _ensemble_ e _stacking_.
 
-#### Part 2: Ensemble and Stacking Techniques
 
-The second part of the project focuses on enhancing investment strategies through ensemble and stacking methods. This involves:
+#### Parte 3: Validação e Melhoria Contínua
 
-1. **Problem Definition**: Extending the project to include ensemble learning and stacking techniques for improved decision-making.
+Na parte final, o projeto amplia suas capacidades introduzindo validação com janelas deslizantes. Aspectos-chave incluem:
 
-2. **Solution Definition**: Conducting experiments with ensemble learning and stacking for both regression and classification, utilizing models likeRandom Forest, Multilayer Perceptron, XGBoost, Naive Bayes, and k-Nearest Neighbors: 
+1. **Definição do Problema**: Aprimorar o framework introduzindo validação com janelas deslizantes para melhoria contínua.
 
-   - **Ensemble Learning**: Combining ML model outputs for regression and classification using techniques such as simple averaging and weighted averaging based on model accuracy.
+2. **Definição da Solução**: Realizar experimentos envolvendo:
+
+   - **Validação do Modelo com Janelas Deslizantes**: Retreinar modelos em intervalos diários, semanais e mensais para melhoria contínua.
    
-   - **Stacking**: Employing a non-linear stacking model (Multilayer Perceptron) to aggregate outputs from individual models.
+   - **Refinamento de _Ensemble_ e _Stacking_**: Refinar ainda mais modelos de _ensemble_ e _stacking_.
 
-3. **Requirements and Results Analysis**: Developing models for regression and classification, applying ensemble learning and stacking techniques, and calculating metrics such as AUC, Precision, Recall, MAE, and RMSE. Comparing against baseline models.
+3. **Requisitos e Análise de Resultados**: Adaptar modelos para validação com janelas deslizantes, refinar modelos de  _ensemble_ e _stacking_, e calcular métricas conforme seções anteriores.
 
-4. **Return Simulator**: Simulating returns using the ensemble and stacking models.
+4. **Simulador de Retornos**: Simular retornos usando os modelos aprimorados.
 
-5. **Report**: Providing a comprehensive report covering languages, packages, baseline analysis, ML results, and financial analysis.
+## Conjunto de Dados
 
-#### Part 3: Validation and Continuous Improvement
+O projeto utiliza dados da ação da Localiza (RENT3) dentro do Índice Bovespa.
 
-In the final part, the project extends its capabilities by introducing validation with sliding windows and continued model refinement. Key aspects include:
+## Contribuições
 
-1. **Problem Definition**: Enhancing the framework by introducing validation with sliding windows for continuous improvement.
-
-2. **Solution Definition**: Conducting experiments involving:
-
-   - **Model Validation with Sliding Windows**: Retraining models at daily, weekly, and monthly intervals for continuous improvement.
-   
-   - **Ensemble and Stacking Refinement**: Further refining ensemble and stacking models.
-
-3. **Requirements and Results Analysis**: Adapting models for validation with sliding windows, refining ensemble and stacking models, and calculating metrics as per previous sections.
-
-4. **Return Simulator**: Simulating returns using the refined models.
-
-5. **Report**: Providing a comprehensive report covering languages, packages, baseline analysis, ML results, and financial analysis.
-
-## Dataset
-
-The project utilizes data from the Localiza RENT3 stock within the Bovespa Index.
-
-## Contributions
-
-Contributions are welcome! Feel free to contribute, provide feedback.
+Contribuições são bem-vindas! Sinta-se à vontade para contribuir e fornecer feedback.
