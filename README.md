@@ -1,4 +1,4 @@
-# Automated Investment Strategies with Machine Learning
+# Estratégias de Investimento Automatizadas com Aprendizado de Máquina
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=flat&logo=scikit-learn&logoColor=white)](https://img.shields.io/badge/scikitlearn-F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white) [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Visão Geral
@@ -35,11 +35,11 @@ A segunda parte do projeto concentra-se em aprimorar estratégias de investiment
 
 1. **Definição do Problema**: Estender o projeto para incluir técnicas de aprendizado de _ensemble_ e _stacking_ para tomada de decisões aprimorada.
 
-2. **Definição da Solução**: Realizar experimentos com aprendizado de _ensemble_ e _stacking para regressão e classificação, utilizando modelos como Random Forest, Multilayer Perceptron, XGBoost, Naive Bayes e k-Nearest Neighbors: 
+2. **Definição da Solução**: Realizar experimentos com aprendizado de _ensemble_ e _stacking_ para regressão e classificação, utilizando modelos como Random Forest, Multilayer Perceptron, XGBoost, Naive Bayes e k-Nearest Neighbors: 
 
    - **Aprendizado de Conjunto**: Combinar as saídas do modelo de ML para regressão e classificação usando técnicas como média simples e média ponderada com base na precisão do modelo.
    
-   - **Empilhamento**: Utilizar um modelo de _stacking_ não linear (Multilayer Perceptron) para agregar saídas de modelos individuais.
+   - **_Stacking_**: Utilizar um modelo de _stacking_ não linear (Multilayer Perceptron) para agregar saídas de modelos individuais.
 
 3. **Requisitos e Análise de Resultados**: Desenvolver modelos para regressão e classificação, aplicar técnicas de aprendizado de _ensemble_ e _stacking_, e calcular métricas como AUC, Precisão, Revocação, MAE e RMSE. Comparar com modelos de linha de base.
 
